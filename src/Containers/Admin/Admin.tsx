@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axiosApi from "../../axiosApi";
 import { useNavigate } from 'react-router-dom';
+import ReactQuill from 'react-quill';
 
 const Admin = () => {
     const [pages, setPages] = useState<string[]>([]);
@@ -85,14 +86,13 @@ const Admin = () => {
                             className="input-group-text text-start w-25"
                             />
                         </div>
-                        <div className='mb-3'>
+                        <div className='mb-5'>
                             <label htmlFor="content" className="form-label">Content:</label>
-                            <textarea
-                            className="form-control w-50"
-                            style={{ height: '200px' }}
-                            id="content"
-                            value={content} 
-                            onChange={(e) => setContent(e.target.value)}
+                            <ReactQuill
+                            theme="snow"
+                            value={content}
+                            onChange={setContent}
+                            style={{ height: '200px', width: '50%' }}
                             />
                         </div>
                         <button type="submit" className='btn btn-primary'>Save</button>

@@ -22,7 +22,7 @@ const Page = () => {
     return (
         <div>
             <h1>{content?.title}</h1>
-            <p>{content?.content}</p>
+            <div dangerouslySetInnerHTML={{ __html: content?.content || "" }}></div>
         </div>
     );
 };

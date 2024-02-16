@@ -26,7 +26,7 @@ const Header = () => {
             <NavLink to="/pages/another-page" className={({ isActive }) => isActive ? 'active' : undefined}>Another Page</NavLink>
           </li>
           <li className='navItem list-group-item bg-primary border-0'>
-            <NavLink to="/admin" className={({ isActive }) => isActive ? 'active' : undefined}>Admin</NavLink>
+            <NavLink to="/pages/admin" className={({ isActive }) => isActive ? 'active' : undefined}>Admin</NavLink>
           </li>
         </ul>
       </nav>
