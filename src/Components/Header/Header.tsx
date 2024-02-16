@@ -8,7 +8,10 @@ const Header = () => {
       <nav>
         <ul className='list-group d-flex flex-row'>
           <li className='navItem list-group-item bg-primary text-light border-0'>
-            <NavLink to="/pages/home" end className={({ isActive }) => isActive ? 'active' : undefined}>Home</NavLink>
+            <NavLink to="/" end className={({ isActive }) => isActive ? 'active' : undefined}>Home</NavLink>
+          </li>
+          <li className='navItem list-group-item bg-primary text-light border-0'>
+            <NavLink to="/pages/test-page" end className={({ isActive }) => isActive ? 'active' : undefined}>Test Page</NavLink>
           </li>
           <li className='navItem list-group-item bg-primary border-0'>
             <NavLink to="/pages/about-us" className={({ isActive }) => isActive ? 'active' : undefined}>About Us</NavLink>
@@ -23,7 +26,7 @@ const Header = () => {
             <NavLink to="/pages/another-page" className={({ isActive }) => isActive ? 'active' : undefined}>Another Page</NavLink>
           </li>
           <li className='navItem list-group-item bg-primary border-0'>
-            <NavLink to="/pages/admin" className={({ isActive }) => isActive ? 'active' : undefined}>Admin</NavLink>
+            <NavLink to="/admin" className={({ isActive }) => isActive ? 'active' : undefined}>Admin</NavLink>
           </li>
         </ul>
       </nav>
