@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axiosApi from "../../axiosApi";
 import { useNavigate } from 'react-router-dom';
 import ReactQuill from 'react-quill';
+import Loader from '../../Components/Loader/Loader';
 
 const Admin = () => {
     const [pages, setPages] = useState<string[]>([]);
@@ -9,9 +10,11 @@ const Admin = () => {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const navigate = useNavigate();
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
     const loadPages = async () => {
+        setIsLoading(true);
         try {
             const response = await axiosApi.get('/pages.json');
             if (response.data) {
@@ -19,6 +22,8 @@ const Admin = () => {
             }
         } catch (error) {
             console.error('Failed to load pages list', error);
+        } finally {
+            setIsLoading(false);
         }
     };
 
@@ -45,11 +50,14 @@ const Admin = () => {
 
     const saveContent = async () => {
         if (selectedPage) {
+            setIsLoading(true);
             try {
                 await axiosApi.put(`/pages/${selectedPage}.json`, { title, content });
                 navigate('/');
             } catch (error) {
                 console.error('Failed to save', error);
+            } finally {
+                setIsLoading(false);
             }
         }
     };
@@ -58,6 +66,10 @@ const Admin = () => {
         e.preventDefault();
         await saveContent();
     };  
+
+    if (isLoading) {
+        return <Loader />
+    }
 
     return (
         <div>
